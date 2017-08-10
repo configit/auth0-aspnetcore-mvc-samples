@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>VTC command line tool | Configit VT SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="VTC command line tool | Configit VT SDK ">
+    <meta name="generator" content="docfx 2.19.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" src="../images/Configit_VT_SDK_white_horisontal_RGB-60.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                <ul class="nav level1 navbar-nav">
+                  <li class="active">
+                    <a href="../guides/vtprojects.html" title="Guides" class="active">Guides</a>
+                  </li>
+                  <li class="">
+                    <a href="../api/index.html" title="Configurator API" class="">Configurator API</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="vtprojects.html" title="VT projects" class="">VT projects</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="lookup-tables.html" title="Lookup tables" class="">Lookup tables</a>
+                          </li>
+                          <li class="">
+                            <a href="arguments.html" title="Arguments" class="">Arguments</a>
+                          </li>
+                          <li class="">
+                            <a href="solve-functions.html" title="Solve functions" class="">Solve functions</a>
+                          </li>
+                          <li class="">
+                            <a href="price-functions.html" title="Price functions" class="">Price functions</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <a href="vtpackages.html" title="VT packages" class="">VT packages</a>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a class="">Configit Quote packages</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="prevent-sap-date-time-extract.html" title="How to prevent SAP date/time characteristics from extracting" class="">How to prevent SAP date/time characteristics from extracting</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <a href="httpserver.html" title="HTTP server" class="">HTTP server</a>
+                    </li>
+                    <li class="active">
+                      <a href="vtc.html" title="VTC command line tool" class="active">VTC command line tool</a>
+                    </li>
+                    <li class="">
+                      <a href="linux.html" title="Running on Linux" class="">Running on Linux</a>
+                    </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="vtc">
+<h1 id="vtc-command-line-tool">VTC command line tool</h1>
+
+<h2 id="creating-a-vt-package-from-a-legacy-quote-package">Creating a VT package from a legacy Quote package</h2>
+<p>The flow for converting a legacy Quote Package is more complicated as new source data can be added and existing customizations shouldn&#39;t be deleted.</p>
+<ol>
+<li>Create initial VT project by converting legacy package</li>
+<li>Manually edit files used for customization - arguments and custom scripts.</li>
+<li>Build the new package</li>
+<li>Test (not implemented yet)</li>
+<li>Publish</li>
+<li>Reconvert new extract of legacy package (at the moment the changes must be merged manually, i.e. create a new VT project and copy the wanted changes into the existing VT project)</li>
+<li>If needed re-edit customization files</li>
+<li>Build the new package</li>
+<li>Test (not implemented yet)</li>
+<li>Publish</li>
+</ol>
+<p>What is important in this flow is that the source data can be regenerated, but the manually edited files should not be overridden. This leads to a design where customization files can be isolated from the other source files (models, price definitions etc.)</p>
+<h2 id="vtc-commands">vtc commands</h2>
+<h3 id="package-commands">Package Commands</h3>
+<h4 id="create">Create</h4>
+<p>Usage:</p>
+<pre><code class="lang-bash">vtc package create --from &lt;PathToLegacyQuotePackage&gt;
+</code></pre><p>This creates a new <em>VT project</em> from an existing Quote package. This command generates a new project in the current folder. The folder structure will be as shown below:</p>
+<pre><code>&lt;project-directory&gt;
+  |--quote-package-dev
+  |    |--src
+  |    |    |--price     # scripts for price customizations
+  |    |    `--solve     # scripts for solver customizations
+  |    `--resources      # resources for the VT project
+  `--config.json         # VT project configuration
+</code></pre><h3 id="build">Build</h3>
+<p>Usage:</p>
+<pre><code class="lang-bash">vtc package build
+</code></pre><p>This command reads the settings from the <code>config.json</code> file in the current directory and builds the project into a VT package. The VT package is stored locally, by default in an <code>output</code> folder within the VT project folder.</p>
+<h3 id="publish">Publish</h3>
+<p>Usage:</p>
+<pre><code class="lang-bash">vtc package publish &lt;publish-target&gt;
+</code></pre><p>This command publishes the VT package built by the <code>build</code> command to the resource repository. This enables the package to be consumed by the Configit Cloud services.</p>
+<p>The <code>config.json</code> is used to determine the location of the VT package. The <code>&lt;publish-target&gt;</code> must refer to a publish target defined in the <code>config.json</code> file - E.g. <code>prod</code> in the example below:</p>
+<pre><code class="lang-json">{
+  ...,
+  &quot;publishTargets&quot;: {
+    &quot;amazon&quot;: &quot;StorageType=Amazon;RegionEndpoint=eu-central-1;EncryptionKey=1o34ZWgjsq;TenantName=modeln.configit.com&quot;,
+    &quot;local&quot;:  &quot;StorageType=Directory;RootPath=output\\local-publish&quot;
+  }
+}
+</code></pre><p>The <code>create</code> command creates a <code>local</code> publish target is created which will publish the VT package in the <code>output</code> folder. This is only meant for testing.</p>
+<h4 id="example">Example</h4>
+<p>The commands below show an example of how a package can be created, built and published. It assumes that a Quote called <code>Coso</code> package is located in <code>c:\data</code>.</p>
+<pre><code class="lang-bash"># Create a folder for the new project
+mkdir Basic
+# Navigate into the folder
+cd Basic
+# Create new VT project from Quote package
+vtc package create --from c:\data\Basic
+# After editing customizations and resources, build the VT package
+vtc package build
+# Finally publish the package
+vtc package publish local
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Configit A/S 2017 — <a href="http://configit.com">configit.com</a>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

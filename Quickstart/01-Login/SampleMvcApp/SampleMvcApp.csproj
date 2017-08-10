@@ -11,6 +11,111 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Secret\**" />
+    <Content Remove="Secret\**" />
+    <EmbeddedResource Remove="Secret\**" />
+    <None Remove="Secret\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.ConfiguratorServices.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.ConfigureService.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Exceptions.CannotLoadVTPackageException.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Exceptions.ConfiguratorException.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Exceptions.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Exceptions.InvalidRequestException.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Exceptions.MissingPropertyInRequestException.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Exceptions.UnexpectedException.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.ExpandArgumentsService.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.PackagePathVersioner.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.PriceService.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Request.BaseSettings.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Request.ConfigureRequest.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Request.ConfigureSettings.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Request.ExpandArgumentsRequest.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Request.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Request.LineAssignment.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Request.PriceLineAssignment.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Request.PriceRequest.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Request.PriceSettings.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Request.SublinesRequest.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Request.SublinesSettings.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Request.VariableAssignment.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.ConfigurationValue.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.ConfigurationValueState.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.ConfigurationVariable.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.ConfigureResponse.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.Debug.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.DebugTrace.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.ExpandArgumentsResponse.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.IntervalValue.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.Issue.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.Justification.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.Line.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.MultiValuedValue.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.PriceLine.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.PriceLineRate.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.PriceLineStatus.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.PriceResponse.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.PriceSheet.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.PriceSummary.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.Product.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.Property.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.PropertyType.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.RemovedAssignments.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.Section.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.SingletonValue.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.SingleValuedValue.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.State.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.StateAndJustification.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.SublinesResponse.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.Trace.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.Response.ValueWithCurrency.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.ServiceSettings.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.SublinesService.html" />
+    <Content Include="wwwroot\docfx\api\Configit.Configurator.Service.ValueWithUnit.html" />
+    <Content Include="wwwroot\docfx\api\index.html" />
+    <Content Include="wwwroot\docfx\favicon.ico" />
+    <Content Include="wwwroot\docfx\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="wwwroot\docfx\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="wwwroot\docfx\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="wwwroot\docfx\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="wwwroot\docfx\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="wwwroot\docfx\guides\arguments.html" />
+    <Content Include="wwwroot\docfx\guides\httpserver.html" />
+    <Content Include="wwwroot\docfx\guides\linux.html" />
+    <Content Include="wwwroot\docfx\guides\lookup-tables.html" />
+    <Content Include="wwwroot\docfx\guides\prevent-sap-date-time-extract.html" />
+    <Content Include="wwwroot\docfx\guides\price-functions.html" />
+    <Content Include="wwwroot\docfx\guides\solve-functions.html" />
+    <Content Include="wwwroot\docfx\guides\vtc.html" />
+    <Content Include="wwwroot\docfx\guides\vtpackages.html" />
+    <Content Include="wwwroot\docfx\guides\vtprojects.html" />
+    <Content Include="wwwroot\docfx\images\arguments.png" />
+    <Content Include="wwwroot\docfx\images\config-json.png" />
+    <Content Include="wwwroot\docfx\images\Configit_VT_SDK_white_horisontal_RGB-60.png" />
+    <Content Include="wwwroot\docfx\images\configurator.png" />
+    <Content Include="wwwroot\docfx\images\data-overview.png" />
+    <Content Include="wwwroot\docfx\index.html" />
+    <Content Include="wwwroot\docfx\index.json" />
+    <Content Include="wwwroot\docfx\logo.svg" />
+    <Content Include="wwwroot\docfx\manifest.json" />
+    <Content Include="wwwroot\docfx\samples\sample-configurator.html" />
+    <Content Include="wwwroot\docfx\search-stopwords.json" />
+    <Content Include="wwwroot\docfx\styles\docfx.css" />
+    <Content Include="wwwroot\docfx\styles\docfx.js" />
+    <Content Include="wwwroot\docfx\styles\docfx.vendor.css" />
+    <Content Include="wwwroot\docfx\styles\docfx.vendor.js" />
+    <Content Include="wwwroot\docfx\styles\lunr.min.js" />
+    <Content Include="wwwroot\docfx\styles\main.css" />
+    <Content Include="wwwroot\docfx\styles\main.js" />
+    <Content Include="wwwroot\docfx\styles\search-worker.js" />
+    <Content Include="wwwroot\docfx\xrefmap.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="wwwroot\**\*;Views\**\*;Areas\**\Views;appsettings.json;web.config">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

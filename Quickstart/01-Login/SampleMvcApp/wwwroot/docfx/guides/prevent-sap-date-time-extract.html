@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>How to prevent SAP date/time characteristics from extracting | Configit VT SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="How to prevent SAP date/time characteristics from extracting | Configit VT SDK ">
+    <meta name="generator" content="docfx 2.19.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" src="../images/Configit_VT_SDK_white_horisontal_RGB-60.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                <ul class="nav level1 navbar-nav">
+                  <li class="active">
+                    <a href="../guides/vtprojects.html" title="Guides" class="active">Guides</a>
+                  </li>
+                  <li class="">
+                    <a href="../api/index.html" title="Configurator API" class="">Configurator API</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="vtprojects.html" title="VT projects" class="">VT projects</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="lookup-tables.html" title="Lookup tables" class="">Lookup tables</a>
+                          </li>
+                          <li class="">
+                            <a href="arguments.html" title="Arguments" class="">Arguments</a>
+                          </li>
+                          <li class="">
+                            <a href="solve-functions.html" title="Solve functions" class="">Solve functions</a>
+                          </li>
+                          <li class="">
+                            <a href="price-functions.html" title="Price functions" class="">Price functions</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <a href="vtpackages.html" title="VT packages" class="">VT packages</a>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a class="">Configit Quote packages</a>
+                        
+                        <ul class="nav level2">
+                          <li class="active">
+                            <a href="prevent-sap-date-time-extract.html" title="How to prevent SAP date/time characteristics from extracting" class="active">How to prevent SAP date/time characteristics from extracting</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <a href="httpserver.html" title="HTTP server" class="">HTTP server</a>
+                    </li>
+                    <li class="">
+                      <a href="vtc.html" title="VTC command line tool" class="">VTC command line tool</a>
+                    </li>
+                    <li class="">
+                      <a href="linux.html" title="Running on Linux" class="">Running on Linux</a>
+                    </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-prevent-sap-datetime-characteristics-from-extracting">How to prevent SAP date/time characteristics from extracting</h1>
+
+<p>VT SDK does not yet support date/time characteristics. To prevent them from extracting into your source Quote package, you need to remove references to them in <code>Extract.xml</code>, as described in this guide.</p>
+<h2 id="1-create-a-text-file-for-storing-names">1. Create a text file for storing names</h2>
+<p>Begin by creating a temporary text file for storing the names of the characteristics you remove. You may need to search on each characteristic name several times to remove all references to it. This file acts as a backup in case you accidentally lose your in-memory copy of a particular name.</p>
+<h2 id="2-open-extractxml">2. Open <code>Extract.xml</code></h2>
+<p>Open <code>Extract.xml</code>, which is produced by Configit Quote Setup when you create a Quote package:</p>
+<ol>
+<li>Find your Quote package on disk.</li>
+<li>From your Quote package, go to <code>./Server/Materials</code>.</li>
+<li>Open <code>Extract.xml</code> in a text editor.</li>
+</ol>
+<h2 id="3-remove-datetime-characteristics-and-references-to-them">3. Remove date/time characteristics and references to them</h2>
+<p>In <code>Extract.xml</code>:</p>
+<ol>
+<li>Search for a <code>&lt;Characterstic&gt;</code> node whose <code>CharacteristicType</code> is set to <code>Date</code> or <code>Time</code>.</li>
+<li>Copy the characteristic&#39;s <code>Name</code> into your temporary file.  </li>
+<li>Remove the <code>&lt;Characteristic&gt;</code> node.</li>
+<li>Search on the characteristic name.<ol>
+<li>If the name matches on the <code>Name</code> attribute value of a <code>&lt;CharacteristicReference&gt;</code> node, remove the node.</li>
+<li>If the name appears in the <code>Source</code> attribute value of a <code>&lt;DependencySourceLine&gt;</code>:<ol>
+<li>Copy the root dependency&#39;s name into your temporary file.</li>
+<li>Remove the <code>&lt;Dependency&gt;</code> node.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>For each dependency you removed:<ol>
+<li>Search on the dependency name.</li>
+<li>Remove any <code>&lt;DependencyReference&gt;</code> nodes whose <code>Name</code> attribute value matches the dependency name.</li>
+</ol>
+</li>
+<li>Repeat the above steps until no date/time characteristics remain.</li>
+</ol>
+<p>Once you&#39;ve removed all date/time references, rebuild your Quote package.</p>
+<h3 id="example">Example</h3>
+<p>For example, say searching on <code>Date</code> matched characteristic below:</p>
+<pre><code class="lang-xml">&lt;Characteristic Name=&quot;M4_VBEP_EDATU&quot; CharacteristicType=&quot;Date&quot; Status=&quot;Released&quot; NumberOfChars=&quot;10&quot; SingleMultiValue=&quot;S&quot; DecimalPlace=&quot;0&quot; Template=&quot;DD.MM.YYYY&quot;&gt;
+...
+&lt;/Characteristic&gt;
+</code></pre><p>You would copy the name <code>M4_VBEP_EDATU</code>, then delete the node.</p>
+<p>Next, you would search on <code>M4_VBEP_EDATU</code>. Say you found a <code>&lt;CharacteristicReference&gt;</code> whose name matched the characteristic, as below: </p>
+<pre><code class="lang-xml">&lt;Class Name=&quot;M1_C_865240&quot; ClassType=&quot;300&quot; ValidFrom=&quot;2010-04-07&quot; ValidTo=&quot;9999-12-31&quot; Status=&quot;Released&quot;&gt;
+  &lt;CharacteristicReferences&gt;
+    &lt;CharacteristicReference Name=&quot;M4_VBEP_EDATU&quot;/&gt;
+    ...
+  &lt;/CharacteristicReferences&gt;
+    ...
+&lt;/Class&gt;
+</code></pre><p>You would then delete the <code>&lt;CharacteristicReference&gt;</code> node.</p>
+<p>Say another search on <code>M4_VBEP_EDATU</code> matched a value in a <code>&lt;DependencySourceLine&gt;</code>, as below:</p>
+<pre><code class="lang-xml">&lt;Dependency Name=&quot;M4_PRE_GF_VBEP_EDATU&quot; Type=&quot;PreCondition&quot; Status=&quot;Released&quot;&gt;
+  &lt;DependencySource&gt;
+    &lt;DependencySourceLine Source=&quot;$self.M4_VBEP_EDATU &amp;gt;= 20151231&quot;/&gt;
+  &lt;/DependencySource&gt;
+  ...
+&lt;/Dependency&gt;
+</code></pre><p>You would copy the name of the root dependency object. In this case, <code>M4_PRE_GF_VBEP_EDATU</code>. Then you would delete the dependency node and all its subnodes.</p>
+<p>Finally, you would search for occurrences  of the dependency name in <code>&lt;DependencyReference&gt;</code> nodes, and delete them. For example:</p>
+<pre><code class="lang-xml">&lt;Value Value=&quot;A92&quot;&gt;
+  &lt;DependencyReferences&gt;
+    &lt;DependencyReference Name=&quot;M4_PRE_GF_VBEP_EDATU&quot;/&gt;
+    ...
+  &lt;/DependencyReferences&gt;
+  ...
+&lt;/Value&gt;
+</code></pre><p>You would delete the node <code>&lt;DependencyReference Name=&quot;M4_PRE_GF_VBEP_EDATU&quot;/&gt;</code>.</p>
+<h3 id="where-to-find-characteristic-reference-nodes">Where to find characteristic reference nodes</h3>
+<p><code>&lt;CharacteristicReference&gt;</code> nodes can appear under:</p>
+<ul>
+<li><code>&lt;CharacteristicGroup&gt;</code> nodes, under <code>Materials/Material/ConfigurationProfiles/ConfigurationProfile/CharacteristicGroups</code>.</li>
+<li><code>&lt;VariantFunction&gt;</code> nodes, under <code>VariantFunctions/VariantFunction</code>.</li>
+</ul>
+<h3 id="where-to-find-dependency-reference-nodes">Where to find dependency reference nodes</h3>
+<p><code>&lt;DependencyReference&gt;</code> nodes can appear under:</p>
+<ul>
+<li><code>&lt;Characteristic&gt;</code> nodes describing a characteristic.</li>
+<li><code>&lt;Value&gt;</code> nodes describing one value of a characteristic.</li>
+<li>&lt;<code>ConfigurationProfile</code>&gt; nodes, under <code>Materials/Material/ConfigurationProfiles</code>.</li>
+<li>&lt;<code>BOMComponent</code>&gt; nodes describing selection conditions, under <code>Materials/Material/BOMs/BOM/BOMComponents</code>.</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Configit A/S 2017 — <a href="http://configit.com">configit.com</a>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

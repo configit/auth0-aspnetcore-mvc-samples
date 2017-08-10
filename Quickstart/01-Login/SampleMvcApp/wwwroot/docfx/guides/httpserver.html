@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>HTTP server | Configit VT SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="HTTP server | Configit VT SDK ">
+    <meta name="generator" content="docfx 2.19.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" src="../images/Configit_VT_SDK_white_horisontal_RGB-60.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                <ul class="nav level1 navbar-nav">
+                  <li class="active">
+                    <a href="../guides/vtprojects.html" title="Guides" class="active">Guides</a>
+                  </li>
+                  <li class="">
+                    <a href="../api/index.html" title="Configurator API" class="">Configurator API</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="vtprojects.html" title="VT projects" class="">VT projects</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="lookup-tables.html" title="Lookup tables" class="">Lookup tables</a>
+                          </li>
+                          <li class="">
+                            <a href="arguments.html" title="Arguments" class="">Arguments</a>
+                          </li>
+                          <li class="">
+                            <a href="solve-functions.html" title="Solve functions" class="">Solve functions</a>
+                          </li>
+                          <li class="">
+                            <a href="price-functions.html" title="Price functions" class="">Price functions</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <a href="vtpackages.html" title="VT packages" class="">VT packages</a>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a class="">Configit Quote packages</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="prevent-sap-date-time-extract.html" title="How to prevent SAP date/time characteristics from extracting" class="">How to prevent SAP date/time characteristics from extracting</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="active">
+                      <a href="httpserver.html" title="HTTP server" class="active">HTTP server</a>
+                    </li>
+                    <li class="">
+                      <a href="vtc.html" title="VTC command line tool" class="">VTC command line tool</a>
+                    </li>
+                    <li class="">
+                      <a href="linux.html" title="Running on Linux" class="">Running on Linux</a>
+                    </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="http-server">HTTP server</h1>
+
+<p>The HTTP server is a self-hosted web server that serves up the API services as HTTP endpoints.</p>
+<h2 id="starting-the-http-server">Starting the HTTP server</h2>
+<p>To start the server, run <code>dotnet Host.dll</code>. It listens on port 5555 by default.</p>
+<h2 id="server-settings">Server settings</h2>
+<p>You can change the server settings in <code>appSettings.json</code>. The default settings are:</p>
+<pre><code class="lang-json">{
+  &quot;urls&quot;: &quot;http://+:5555&quot;,
+  &quot;cacheTimeoutInSeconds&quot;: 100,
+  &quot;productCacheMaxItems&quot;: 10,
+  &quot;priceDefinitionCacheMaxItems&quot;: 10,
+  &quot;argumentsDefinitionCacheMaxItems&quot;: 10,
+  &quot;lookupCollectionCacheMaxItems&quot;: 10,
+  &quot;scriptCacheMaxItems&quot;: 100,
+  &quot;bomCacheMaxItems&quot;: 10,
+  &quot;scriptPoolSize&quot;:  4
+}
+</code></pre><ul>
+<li>urls: Url that server should listen on</li>
+<li>cacheTimeoutInSeconds: sets the number of seconds when the cache of loaded resources should timeout. Loaded resources are price procedures, product models etc. These are loaded once from the resource repository and kept in memory.When a resource times out, then the next request for the given resource will check if there is a newer available version. If there is a newer version, then the cache updates accordingly.</li>
+<li>The keys ending with <code>maxItems</code> control the maximum number of cached resources for a given resource type. Setting these to a large number can lead to high memory usage.</li>
+</ul>
+<p>In the <code>appSettings.Production.json</code> you specify the connection string to storage where the &quot;VT Packages&quot; are loaded from</p>
+<ul>
+<li><p>sourceConnectionString says where the package is located, and how to connect to it.</p>
+<ul>
+<li><p>When using <code>StorageType=Directory</code>, the <code>RootPath</code> corresponds to the one used in the directory that you published your package to.</p>
+</li>
+<li><p>When using <code>StorageType=Amazon</code>, the Configurator API might throw a <code>TrustedFailure WebException</code>. In this case, run the command:</p>
+<p><code>mozroots --import --ask-remove --machine</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="endpoints-and-mappings-to-api-reference">Endpoints and mappings to API reference</h3>
+<p>The httpserver has 4 endpoints:</p>
+<ul>
+<li><code>/api/sublines/</code> - expand multilevel products lines</li>
+<li><code>/api/configure</code> - configure/price a single product at a time</li>
+<li><code>/api/price</code> - get a price report for a single product at a time</li>
+<li><code>/api/expandArguments</code> - manually expand arguments. This can be used for debugging.</li>
+</ul>
+<p>Each of these endpoints is implemented in a .NET class. The <a class="xref" href="../api/Configit.Configurator.Service.html">API reference documentation</a> include details for each of these 4 endpoints.</p>
+<p>The <code>/api/expandArguments</code> endpoint is implemented in <a class="xref" href="../api/Configit.Configurator.Service.ExpandArgumentsService.html">ExpandArgumentsService</a>.</p>
+<p>The <code>/api/sublines</code> endpoint is implemented in <a class="xref" href="../api/Configit.Configurator.Service.SublinesService.html">SublinesService</a>.</p>
+<p>The <code>/api/configure</code> endpoint is implemented in <a class="xref" href="../api/Configit.Configurator.Service.ConfigureService.html">ConfigureService</a>.</p>
+<p>The <code>/api/price</code> endpoint is implemented in <a class="xref" href="../api/Configit.Configurator.Service.PriceService.html">PriceService</a>.</p>
+<p>To learn how to use API, refer to the <a class="xref" href="../api/Configit.Configurator.Service.html">Configurator API</a> reference material. You can easily map the API reference to JSON request/responses. For example the <a class="xref" href="../api/Configit.Configurator.Service.Request.ConfigureRequest.html">ConfigureRequest</a> has these these properties:</p>
+<pre><code>string ProductId;
+string PackagePath;
+string Language;
+string Currency;
+ValueWithUnit Quantity;
+ExpandoObject GlobalArguments;
+IEnumerable&lt;VariableAssignment&gt; VariableAssignments;
+IEnumerable&lt;PriceLineAssignment&gt; PriceLineAssignments;
+</code></pre><p>You can map these properties into a json request with these rules:</p>
+<ul>
+<li>Lowercase the first word their names.</li>
+<li><code>string</code> is a json string</li>
+<li><code>int/decimal</code> is a json number</li>
+<li>Types such a <a class="xref" href="../api/Configit.Configurator.Service.ValueWithUnit.html">ValueWithUnit</a> you can follow the documentation and find its properties.</li>
+<li><code>ExpandoObject</code> is any json object</li>
+<li>IEnumerable is a json array</li>
+</ul>
+<p>So an object of the ConfigureRequest can be expression in json like this:</p>
+<pre><code class="lang-json">{
+  &quot;productId&quot;: &quot;BIKE_TEAM&quot;,
+  &quot;packagePath&quot;: &quot;Basic&quot;,
+  &quot;language&quot;: &quot;Language&quot;,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;valueWithQuantity&quot;: { &quot;value&quot;: 21, &quot;unit&quot;: &quot;EA&quot; },
+  &quot;globalArguments&quot;: { &quot;SalesOrganizarion&quot;: &quot;0001&quot; },
+  &quot;variableAssignments&quot;: [ {&quot;variableId&quot;: &quot;COLOR&quot;, &quot;value&quot;: &quot;BLUE&quot; }],
+  &quot;priceAssignments&quot;: []
+}
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Configit A/S 2017 — <a href="http://configit.com">configit.com</a>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

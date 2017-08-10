@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Lookup tables | Configit VT SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Lookup tables | Configit VT SDK ">
+    <meta name="generator" content="docfx 2.19.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" src="../images/Configit_VT_SDK_white_horisontal_RGB-60.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                <ul class="nav level1 navbar-nav">
+                  <li class="active">
+                    <a href="../guides/vtprojects.html" title="Guides" class="active">Guides</a>
+                  </li>
+                  <li class="">
+                    <a href="../api/index.html" title="Configurator API" class="">Configurator API</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="vtprojects.html" title="VT projects" class="">VT projects</a>
+                        
+                        <ul class="nav level2">
+                          <li class="active">
+                            <a href="lookup-tables.html" title="Lookup tables" class="active">Lookup tables</a>
+                          </li>
+                          <li class="">
+                            <a href="arguments.html" title="Arguments" class="">Arguments</a>
+                          </li>
+                          <li class="">
+                            <a href="solve-functions.html" title="Solve functions" class="">Solve functions</a>
+                          </li>
+                          <li class="">
+                            <a href="price-functions.html" title="Price functions" class="">Price functions</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <a href="vtpackages.html" title="VT packages" class="">VT packages</a>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a class="">Configit Quote packages</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="prevent-sap-date-time-extract.html" title="How to prevent SAP date/time characteristics from extracting" class="">How to prevent SAP date/time characteristics from extracting</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <a href="httpserver.html" title="HTTP server" class="">HTTP server</a>
+                    </li>
+                    <li class="">
+                      <a href="vtc.html" title="VTC command line tool" class="">VTC command line tool</a>
+                    </li>
+                    <li class="">
+                      <a href="linux.html" title="Running on Linux" class="">Running on Linux</a>
+                    </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="lookup-tables">Lookup tables</h1>
+
+<p>At runtime, the <a href="../api/index.html">Configurator API</a> needs access to data - such as customer information, sales organizations, and distribution channels - which is typically stored outside of your product models. You provide access to this data in the form of <em>lookup tables</em>. </p>
+<h3 id="defining-lookup-tables">Defining lookup tables</h3>
+<p>In your VT project&#39;s <code>queries.json</code> file, you define lookup tables with SQL queries against databases like those in your source Quote package.
+The file is located at <code>quote-package-dev\resources\</code>.</p>
+<p>Below is an example <code>queries.json</code> file that defines a lookup table named <code>ProductHierarchy</code>:</p>
+<pre><code class="lang-json">{
+  &quot;collection&quot;: {
+    &quot;serializerId&quot;: &quot;adoNetTableCollection&quot;,
+    &quot;id&quot;: &quot;lookupTables&quot;,
+    &quot;connectionDescriptions&quot;: [
+      {
+        &quot;id&quot;: &quot;SapTables&quot;,
+        &quot;provider&quot;: &quot;System.Data.SqlServerCe.4.0&quot;,
+        &quot;connectionString&quot;: &quot;Data Source=App\\Materials\\sap_tables.sdf;&quot;
+      },
+    ],
+    &quot;tables&quot;: [
+      {
+        &quot;id&quot;: &quot;ProductHierarchy&quot;,
+        &quot;connectionId&quot;: &quot;SapTables&quot;,
+        &quot;command&quot;: &quot;SELECT MATNR as Material, 
+                           VKORG as SalesOrganization, 
+                           VTWEG as DistributionChannel, 
+                           PRODH as ProductHierarchy 
+                    FROM MVKE&quot;
+      }
+    ]
+  }
+}
+</code></pre><p><br></p>
+<p>At <a href="vtc.html#build">build time</a>, the <code>vtc</code> tool processes <code>queries.json</code>, generating the lookup tables and adding them to the VT package. The lookup tables are read-only, and represented in a compact format designed for fast access. They also remove dependencies on &#39;real&#39; databases so that your package is platform neutral.</p>
+<p>The above defintion generates a table like this one:</p>
+<table>
+<thead>
+<tr>
+<th>Material</th>
+<th>SalesOrganization</th>
+<th>DistributionChannel</th>
+<th>ProductHierarchy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BIKE_TEAM</td>
+<td>0001</td>
+<td>01</td>
+<td>0014500110</td>
+</tr>
+<tr>
+<td>IHEAR</td>
+<td>0001</td>
+<td>01</td>
+<td>0014500121</td>
+</tr>
+<tr>
+<td>TSHIRT</td>
+<td>0001</td>
+<td>01</td>
+<td>0014500111</td>
+</tr>
+</tbody>
+</table>
+<h3 id="using-lookup-tables">Using lookup tables</h3>
+<p>You can use lookup tables:</p>
+<ul>
+<li>When defining dyanmic arguments. See how in the <a href="arguments.html">Arguments</a> guide.</li>
+<li>From within certain JavaScript functions, described below.</li>
+</ul>
+<p>Lookup tables are supported in <a href="price-functions.html">pricing functions</a> and <a href="solve-functions.html#pfunctions">pfunctions</a>. These functions have an optional parameter, <code>callbacks</code>, that provides access to the lookup tables via its <code>lookup</code> object.</p>
+<p>To get a lookup table, call <code>callbacks.lookup.getTable()</code>, passing it the table name. For example, to get the table named <code>customers</code>:</p>
+<pre><code class="lang-javascript">function myCustomFunction( callbacks ) {
+  var table = callbacks.lookup.getTable( &#39;customers&#39; );
+  ...
+}
+</code></pre><h4 id="querying-tables-with-lookup">Querying tables with <code>lookup()</code></h4>
+<p>You can query a table by calling <code>lookup()</code> on in it. This performs a <code>SELECT *</code> type query, returning all of the table rows.</p>
+<p><code>lookup()</code> takes an optional <code>where</code> parameter that lets you filter the results of the query, as in a SQL <code>WHERE</code> clause. The <code>where</code> parameter can be an object or an array.</p>
+<p><br></p>
+<h5 id="where-object-syntax"><code>where</code> object syntax</h5>
+<p>The <code>where</code> object can contain one or more properties. Each property represents an &#39;equals&#39; condition to filter on, and are key-value pairs, where:</p>
+<ul>
+<li>The key is the name of a column in the table, and </li>
+<li>The value is the value in the condition.</li>
+</ul>
+<p>For example, to select all records where <code>Customer</code> equals <code>Arthur</code>:</p>
+<pre><code class="lang-javascript">var where = { Customer: &#39;Arthur&#39; };
+var records = table.lookup( where );
+</code></pre><p>Multiple conditions are joined by an <code>AND</code> operator. </p>
+<p>For example, to select all records where <code>Customer</code> equals <code>Arthur</code> <em>and</em> <code>Country</code> equals <code>England</code>:</p>
+<pre><code class="lang-javascript">var where = { Customer : &#39;Arthur&#39;, Country : &#39;England&#39; };
+var records = table.lookup( where );
+</code></pre><p><br></p>
+<h5 id="where-array-syntax"><code>where</code> array syntax</h5>
+<p>The <code>where</code> array lets you specify conditions with a variety of operator types. Each condition in the array is an object with the format:</p>
+<p><code>{ column: &lt;columnName&gt;, opr: &lt;operator&gt;, value: &lt;value&gt; }</code></p>
+<ul>
+<li><code>&lt;columName&gt;</code> is the name of a column in the table.</li>
+<li><code>&lt;operator&gt;</code> must be one of the supported operators, listed below.</li>
+<li><code>&lt;value&gt;</code> can be a single value or an array of values, depending on the <operator> type.</operator></li>
+</ul>
+<p>The supported operators are:</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Can value be null?</th>
+<th>Can value be an array?</th>
+<th>Satisfied When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eq</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Cell is equal to at least one of the values</td>
+</tr>
+<tr>
+<td>Neq</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Cell is not equal to any of the values</td>
+</tr>
+<tr>
+<td>Lt</td>
+<td>No</td>
+<td>No</td>
+<td>Cell is less than provided value</td>
+</tr>
+<tr>
+<td>LtEq</td>
+<td>No</td>
+<td>No</td>
+<td>Cell is less than or equal the provided value</td>
+</tr>
+<tr>
+<td>Gt</td>
+<td>No</td>
+<td>No</td>
+<td>Cell is greater than the provided value</td>
+</tr>
+<tr>
+<td>GtEq</td>
+<td>No</td>
+<td>No</td>
+<td>Cell is greater or equal the provided value</td>
+</tr>
+<tr>
+<td>StartsWith</td>
+<td>No</td>
+<td>Yes</td>
+<td>Cell starts with at least one of the provided values</td>
+</tr>
+<tr>
+<td>EndsWith</td>
+<td>No</td>
+<td>Yes</td>
+<td>Cell ends with at least one of the provided values</td>
+</tr>
+<tr>
+<td>Contains</td>
+<td>No</td>
+<td>Yes</td>
+<td>At least one of the provided values is a substring in the cell&#39;s value</td>
+</tr>
+</tbody>
+</table>
+<p>For example, to select all records where <code>Weight</code> is between <code>10</code> and <code>20</code>:</p>
+<pre><code class="lang-javascript">var where = [   
+  { column: &#39;Weight&#39;, opr: &#39;Gt&#39;, value: 10 }, 
+  { column: &#39;Weight&#39;, opr: &#39;Lt&#39;, value: 20 }
+];
+var records = table.lookup( where );
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Configit A/S 2017 — <a href="http://configit.com">configit.com</a>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

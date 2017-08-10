@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Getting started | Configit VT SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Getting started | Configit VT SDK ">
+    <meta name="generator" content="docfx 2.19.2.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc">
+    <meta property="docfx:tocrel" content="toc">
+    <meta property="docfx:rel" content="">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" src="images/Configit_VT_SDK_white_horisontal_RGB-60.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                <ul class="nav level1 navbar-nav">
+                  <li class="">
+                    <a href="guides/vtprojects.html" title="Guides" class="">Guides</a>
+                  </li>
+                  <li class="">
+                    <a href="api/index.html" title="Configurator API" class="">Configurator API</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="getting-started">Getting started</h1>
+
+<h2 id="what-is-configit-vt-sdk">What is Configit VT SDK?</h2>
+<p>Configit VT SDK is a set of tools and APIs that you can use to create configurator applications. The &#39;VT&#39; stands for Virtual Tabulation &trade;, Configit&#39;s patented configuration technology.</p>
+<p>The SDK includes:</p>
+<ul>
+<li><code>vtc</code>, a command line tool for creating, building, and publishing VT packages that contain SAP products, pricing, and BOM.</li>
+<li>Configurator API, a .NET class library API with services for configuring products in VT packages.</li>
+<li>A self-hosted HTTP server that exposes the Configurator API as a REST API.</li>
+<li>A sample VT SDK configurator web application.</li>
+</ul>
+<p>The SDK does not, at this time, support product models authored in other Configit products (Ace, Build, Model).</p>
+<h2 id="overview">Overview</h2>
+<p>The following sections give an overview the SDK&#39;s key concepts:</p>
+<ul>
+<li><a href="#configurators">Configurators</a></li>
+<li><a href="#creating-vt-packages">Creating VT packages</a></li>
+<li><a href="#updating-vt-packages">Updating VT packages</a></li>
+</ul>
+<p>Some familiarity with product configuration and SAP concepts is useful, but not required.</p>
+<h3 id="configurators">Configurators</h3>
+<p>Let&#39;s take a look at the flow of a VT SDK configurator web application, or <em>configurator</em> for short.</p>
+<p><img src="images/configurator.png" alt="diagram"></p>
+<h4 id="step-1-user-interaction">Step 1: User interaction</h4>
+<p>First, the user interacts with the configurator UI by making <em>assignments</em> to products or pricing. For example, they can:</p>
+<ul>
+<li>Select a value in the configuration, such as the color of a product.</li>
+<li>Enter a pricing value, such as giving a discount.</li>
+</ul>
+<h4 id="step-2-making-an-http-request">Step 2: Making an HTTP request</h4>
+<p>Next, the configurator makes an HTTP POST request with a JSON body to a service on the HTTP server. The services are stateless; as a result, a request typically includes all assignments the user has made throughout their configuration session.</p>
+<h4 id="step-3-processing-the-request">Step 3: Processing the request</h4>
+<p>The HTTP server receives the request at one of these endpoints:</p>
+<ul>
+<li><p><code>/api/configure</code>, for configuring a single product.</p>
+</li>
+<li><p><code>/api/price</code>, for customizing the pricing of a single product.</p>
+</li>
+<li><p><code>/api/sublines</code>, for configuring a multilevel product.</p>
+</li>
+</ul>
+<p>The endpoints are stateless, thread-safe REST services that wrap the Configurator API class library services.</p>
+<h4 id="step-4-retrieving-vt-package-data">Step 4: Retrieving VT package data</h4>
+<p>A service gets its product and pricing data from a VT package located on disk or in the cloud. VT packages are described in <a href="#creating-vt-packages">the next section</a>.</p>
+<h4 id="step-5-handling-the-response">Step 5: Handling the response</h4>
+<p>Lastly, the server returns the response with a JSON body, and the configurator updates its UI accordingly. </p>
+<ul>
+<li><p><code>/api/configure</code> returns the entire configuration of a product, with pricing. The configuration includes all variables (characteristics in SAP), their values, and the states of the values (for example, whether they are assigned).</p>
+</li>
+<li><p><code>/api/price</code> returns a product&#39;s price sheet, with totals (net value, tax, and total price) and price lines that describe how the sheet is calculated.</p>
+</li>
+<li><p><code>/api/sublines</code> returns the BOM of a multilevel product, including its subproducts and pricing.</p>
+</li>
+</ul>
+<h3 id="creating-vt-packages">Creating VT packages</h3>
+<p><em>VT packages</em> are collections of data including configurable products, standard (non-configurable) products, pricing information, and BOM. They also have <em>view</em> data like translated texts, properties, and structure for how to organize configurations in a UI. </p>
+<p>Below shows the process for creating a VT package from SAP master data:</p>
+<p><img src="images/data-overview.png" alt="diagram"></p>
+<h4 id="step-1-extracting-from-sap">Step 1: Extracting from SAP</h4>
+<p>First, you use the Configit Quote SAP Extractor to extract data from SAP into a <em>Quote package</em>.</p>
+<h4 id="step-2-creating-a-vt-project">Step 2: Creating a VT project</h4>
+<p>Next, you use the <code>vtc</code> command line tool to create a <em>VT project</em> that references the Quote package. The project is where you make customizations to your data.</p>
+<p>A VT project exists on disk as a collection of files and folders. At its root is a <code>config.json</code> configuration file specifying:</p>
+<ul>
+<li>The location of the source Quote package.</li>
+<li>The path on disk where to build the project into a VT package.</li>
+<li>Publish targets (such as the cloud) for where to deploy the VT package.</li>
+</ul>
+<h4 id="step-3-customizing-vt-project-contents">Step 3: Customizing VT project contents</h4>
+<p>During this step, you can customize:</p>
+<ul>
+<li><a href="guides/lookup-tables.html">Lookup tables</a>, supplementary data you can access at runtime. Examples include customer lists, sales areas, and product hierarchies.</li>
+</ul>
+<p><img align="right" src="images/arguments.png"></p>
+<ul>
+<li><p><a href="guides/arguments.html">Arguments</a>, values used by the services when solving configurations and calculating prices. Arguments can be static or dynamic, with dynamic arguments getting their values from lookup tables. For instance, you can select which currency to use based on the sales area.</p>
+</li>
+<li><p><a href="guides/price-functions.html">Price functions</a>, which let you customize the behavior during pricing. There are two kinds: <em>requirements</em> and <em>alternative calculation</em> types. Requirements are called when a price step or an access sequence is activated. Alternative calculation types are used to calculate the value of a price line.</p>
+</li>
+<li><p><a href="guides/solve-functions.html">Solve functions</a>, which your SAP models can refer to. There are two kinds: <em>variant functions</em> and <em>pfunctions</em>. Variant functions return simple values and are used in dependencies in your SAP models. Pfunctions can change the state of the configuration, the valid domain of a characteristic, or even the SAP environment itself.</p>
+</li>
+</ul>
+<h4 id="step-4-building-the-vt-package">Step 4: Building the VT package</h4>
+<p>After your customizations are complete, you use <code>vtc</code> to build the project contents into a VT package. The VT package is built on disk at a location specified in the project&#39;s <code>config.json</code> file.</p>
+<h4 id="step-5-publishing-the-vt-package">Step 5: Publishing the VT package</h4>
+<p>Finally, you use <code>vtc</code> to publish the package to a location on disk or in the cloud at Amazon S3 or Azure Blob storage. The package is now ready for use by your configurator.</p>
+<p>When you publish, the VT package gets versioned with a GUID. You can use GUIDs to target specific package versions, for example, to protect a user&#39;s configuration session from being impacted by newly published packages.</p>
+<h3 id="updating-vt-packages">Updating VT packages</h3>
+<p>When your SAP master data changes, you can update your VT packages accordingly. To do so:</p>
+<ol>
+<li>Extract your SAP data into a new Quote package. </li>
+<li>In your VT project, replace the previous Quote package with the new Quote package.</li>
+<li>Revisit your customizations (lookup tables, arguments, pricing functions, solve functions), editing them as necessary to be aligned with changes in the master data. </li>
+<li>Rebuild and publish the VT package.</li>
+</ol>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>See <a href="guides/vtprojects.html">Guides</a> for details on VT SDK concepts and the tools it ships with.</li>
+<li>See <a href="api/index.html">Configurator API</a> for reference material on the services and their request/response data types.</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Configit A/S 2017 — <a href="http://configit.com">configit.com</a>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

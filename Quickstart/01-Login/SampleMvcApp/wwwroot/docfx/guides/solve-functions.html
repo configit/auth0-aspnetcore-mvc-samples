@@ -1,0 +1,300 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Solve functions | Configit VT SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Solve functions | Configit VT SDK ">
+    <meta name="generator" content="docfx 2.19.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" src="../images/Configit_VT_SDK_white_horisontal_RGB-60.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                <ul class="nav level1 navbar-nav">
+                  <li class="active">
+                    <a href="../guides/vtprojects.html" title="Guides" class="active">Guides</a>
+                  </li>
+                  <li class="">
+                    <a href="../api/index.html" title="Configurator API" class="">Configurator API</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="vtprojects.html" title="VT projects" class="">VT projects</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="lookup-tables.html" title="Lookup tables" class="">Lookup tables</a>
+                          </li>
+                          <li class="">
+                            <a href="arguments.html" title="Arguments" class="">Arguments</a>
+                          </li>
+                          <li class="active">
+                            <a href="solve-functions.html" title="Solve functions" class="active">Solve functions</a>
+                          </li>
+                          <li class="">
+                            <a href="price-functions.html" title="Price functions" class="">Price functions</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <a href="vtpackages.html" title="VT packages" class="">VT packages</a>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a class="">Configit Quote packages</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="prevent-sap-date-time-extract.html" title="How to prevent SAP date/time characteristics from extracting" class="">How to prevent SAP date/time characteristics from extracting</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <a href="httpserver.html" title="HTTP server" class="">HTTP server</a>
+                    </li>
+                    <li class="">
+                      <a href="vtc.html" title="VTC command line tool" class="">VTC command line tool</a>
+                    </li>
+                    <li class="">
+                      <a href="linux.html" title="Running on Linux" class="">Running on Linux</a>
+                    </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="solve-functions">Solve functions</h1>
+
+<p>You can customize the pricing and solve services with JavaScript functions.</p>
+<ul>
+<li>Each function must be in its own <code>.js</code> file, whose name matches the function being exposed.</li>
+<li>The <code>.js</code> files are placed in the <code>quote-package-dev\src\price</code> and <code>quote-package-dev\src\solve</code>. The <a href="vtc.html#build">vtc command line</a> creates these folders and creates JavaScript stubs if there is a need for customization in the converted Quote package.</li>
+<li>In <code>ignore.json</code>, you can control which custom functions get published when the package is made.</li>
+</ul>
+<h2 id="solve-function-customizations">Solve function customizations</h2>
+<p>Solve functions include variant functions and pfunctions.</p>
+<h3 id="variant-functions">Variant functions</h3>
+<p>The parameters of a variant function are:</p>
+<ul>
+<li><code>args</code>: Each member of <code>args</code> is an object with an input name and value, each one bound to a characteristic by name.</li>
+</ul>
+<p>Its returned object must contain:</p>
+<ul>
+<li><code>__result</code>: A Boolean property indicating the success of execution, or the result of a function that returns a Boolean (e.g. <code>IsEqual()</code>).</li>
+<li>An output property.</li>
+</ul>
+<h4 id="example">Example</h4>
+<p>This variant function example takes two numbers and returns the one with the highest value:</p>
+<pre><code class="lang-javascript">function Z_MAX(args) {
+  return {
+    __result: true,
+    MAX_RES: args.VAL1 &gt; args.VAL2 ? args.VAL1 : args.VAL2
+  };
+}
+</code></pre><p>This function must be placed in a <code>.js</code> file of the same name, in this case <code>Z_MAX.js</code>.</p>
+<p>You can then use it in a model&#39;s characteristic assignments, for example:</p>
+<pre><code>FUNCTION Z_MAX(VAL1 = $SELF.COSOE_RC_X1,
+               VAL2 = $SELF.COSOE_RC_X2,
+               MAX_RES = $SELF.COSOE_RC_X3)
+</code></pre><h3 id="pfunctions">Pfunctions</h3>
+<p>The parameters of a pfunction are:</p>
+<ul>
+<li><code>args</code>: Each member of <code>args</code> is an object with an input name and value, each one bound to a characteristic by name.</li>
+<li><code>env</code>: The environment of the active KMAT, providing access values in dynamic structures such as VBAK.</li>
+<li><code>callbacks</code>: Each member provided represents a built-in callback function that can be called from the JavaScript customization function to affect the model characteristics. See below for the available functions and their parameters.</li>
+</ul>
+<p>Its returned object must contain:</p>
+<ul>
+<li><code>__result</code>: A Boolean property indicating the success of execution, or the result of a function that returns a Boolean (e.g. <code>IsEqual()</code>).</li>
+<li>An output property.</li>
+</ul>
+<h4 id="callback-functions">Callback functions</h4>
+<p>These callback functions are available in the <code>callbacks</code> object:</p>
+<h5 id="assignvaluestring-csticname-object-csticvalue">assignValue(string csticName, object csticValue)</h5>
+<p>Assigns a value to a characteristic.</p>
+<ul>
+<li>csticName: The name of a characteristic whose value should be assigned.</li>
+<li>csticValue: The value to assign to the characteristic.</li>
+</ul>
+<h5 id="assigndefaultvaluestring-csticname-object-csticvalue">assignDefaultValue(string csticName, object csticValue)</h5>
+<p>Assigns a default value to a characteristic.</p>
+<ul>
+<li>csticName: The name of a characteristic whose default value should be assigned.</li>
+<li>csticValue: The default value to assign to the characteristic.</li>
+</ul>
+<h5 id="removedefaultvaluestring-csticname-object-csticvalue">removeDefaultValue(string csticName, object csticValue)</h5>
+<p>Removes a default assignment on the characteristic.</p>
+<ul>
+<li>csticName: The name of a characteristic whose default assignment should be removed.</li>
+<li>csticValue: The default value to remove from the characteristic.</li>
+</ul>
+<h5 id="removeprocedureassignmentsstring-csticname">removeProcedureAssignments(string csticName)</h5>
+<p>Removes assignments to the characteristic by procedures.</p>
+<ul>
+<li>csticName: The name of a characteristic whose procedure assignments should be removed.</li>
+</ul>
+<h5 id="removeuserassignmentsstring-csticname">removeUserAssignments(string csticName)</h5>
+<p>Removes assignments to the characteristic by users.</p>
+<ul>
+<li>csticName: The name of a characteristic whose user assignments should be removed.</li>
+</ul>
+<h5 id="getcurrentdomainvaluesstring-csticname">getCurrentDomainValues(string csticName)</h5>
+<p>Gets the assigned values of the currently allowed domain, if assignments have been made.</p>
+<ul>
+<li>csticName: The name of a characteristic whose assigned values should be returned.</li>
+</ul>
+<p>Returns: object[]</p>
+<h5 id="getrestricteddomainvaluesstring-csticname">getRestrictedDomainValues(string csticName)</h5>
+<p>Gets the assigned values of the currently restricted domain. Does not reflect assignments to procedure or user unless they lead to the restriction.</p>
+<ul>
+<li>csticName: The name of a characteristic whose restricted values should be returned.</li>
+</ul>
+<p>Returns: object[]</p>
+<h5 id="getassignedvaluestring-csticname">getAssignedValue(string csticName)</h5>
+<p>Gets the characteristic assigned value.</p>
+<ul>
+<li>csticName: The name of a characteristic whose assigned value should be returned.</li>
+</ul>
+<p>Returns: object</p>
+<h5 id="getassignedvaluesstring-csticname">getAssignedValues(string csticName)</h5>
+<p>Gets the currently assigned values.</p>
+<ul>
+<li>csticName: The name of a characteristic whose values should be returned.</li>
+</ul>
+<p>Returns: object[]</p>
+<h5 id="getdomainvaluesstring-csticname">getDomainValues(string csticName)</h5>
+<p>Gets the relevant domain values.</p>
+<ul>
+<li>csticName: The name of a characteristic whose values should be returned.</li>
+</ul>
+<p>Returns: object[]</p>
+<h4 id="examples">Examples</h4>
+<p>This pfunction assigns values to characteristics bound to VAL1 and VAL2.</p>
+<pre><code class="lang-javascript">function P_SET_VAL(args, env, callbacks) {
+  callbacks.assignValue(&#39;VAL1&#39;, 1);
+  callbacks.assignValue(&#39;VAL2&#39;, 2);
+  return {
+    __result: true
+  };
+}
+</code></pre><p>This function must be placed in a <code>.js</code> file of the same name, in this case <code>P_SET_VAL.js</code>.</p>
+<p>It can then be used in a model&#39;s characteristic assignments, for example as follows:</p>
+<pre><code>PFUNCTION P_SET_VAL()
+</code></pre><p>The next example gets the restricted domain values for &#39;COSOE_RC_X1&#39; and returns a result based on the first 2 elements being equal to 1 and 2.</p>
+<pre><code class="lang-javascript">function RESTRICTED_TO_1_OR_2(args, env, callbacks) {
+  var restrictedDomainValues = callbacks.getRestrictedDomainValues(&#39;COSOE_RC_X1&#39;);
+  return {
+    __result: restrictedDomainValues[0].SingleOrDefault == &#39;1&#39; &amp;&amp; restrictedDomainValues[1].SingleOrDefault == &#39;2&#39;
+  };
+}
+</code></pre><p>This function must be placed in a <code>.js</code> file of the same name, in this case <code>RESTRICTED_TO_1_OR_2.js</code>.</p>
+<p>It can then be used in a model&#39;s characteristic assignments, for example as follows:</p>
+<pre><code>$SELF.VAL1 = 42 IF PFUNCTION RESTRICTED_TO_1_OR_2()
+</code></pre><h2 id="general-script-info">General script info</h2>
+<h3 id="guidelines-for-writing-implementations">Guidelines for writing implementations</h3>
+<p>You may separate your JavaScript code into modules so long as they are supported by <a href="https://babeljs.io/">Babel</a> and <a href="http://rollupjs.org/">Rollup</a>.</p>
+<p>For performance reasons, consider keeping the customizations simple and reduce the number of external dependencies.</p>
+<h3 id="bundling-the-customizations">Bundling the customizations</h3>
+<p>You must bundle your customizations into a single file, so that they can be imported into the VT cloud package.
+To do so, run the command <code>vtc package build</code> in the project root folder.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Configit A/S 2017 — <a href="http://configit.com">configit.com</a>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
